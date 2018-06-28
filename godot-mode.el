@@ -51,9 +51,7 @@
    '("[\\.[:space:]{($]\\(_*[[:upper:]]+[[:upper:][:lower:]_$0-9]*\\)" 1 font-lock-type-face)
    '("\\(func\\) \\(.*?\\)(" 2 font-lock-function-name-face)
    '("\\(var\\|func\\)" . font-lock-keyword-face)
-   '("Feature: \\(.*\\)" 1 font-lock-variable-name-face)
-   '("\\(extends\\|if\\|self\\|else\\)" 1 font-lock-keyword-face)
-   '("\\(.*?\\)\\.\\w+" 1 font-lock-preprocessor-face)
+   '("\\(extends\\|if\\|self\\|else\\| or\\)" 1 font-lock-keyword-face)
    '("\\(\".*?\"\\)" . font-lock-string-face)
    '("\\('.*?'\\)" . font-lock-string-face)
  ))
@@ -69,7 +67,7 @@
   (if (bobp)
       (indent-line-to 0)
     (let ((not-indented t)
-          cur-indent)
+          (cur-indent (current-indentation)))
       (if (looking-at "^[ \t]*\\(var\\|func\\).*[:=]")
           (setq cur-indent 0)
         (save-excursion
@@ -79,11 +77,16 @@
                 (progn
                   (setq cur-indent (+ default-tab-width (current-indentation)))
                   (setq not-indented nil))
-              (if (or (looking-at "^[ \t]*$") (looking-at "^[ \t]else:"))
+              (if (looking-at "^[ \t]else:")
                   (progn
                     (setq cur-indent (- (current-indentation) default-tab-width))
                     (setq not-indented nil))
-                  (if (bobp) (setq not-indented nil)))
+                (if (or (looking-at "^[ \t]*$") (looking-at "^[ \t]else:"))
+                    (progn
+                      ;; (setq cur-indent default-tab-width)
+                      ;; (setq cur-indent (- (current-indentation) default-tab-width))
+                      (setq not-indented nil))
+                  (if (bobp) (setq not-indented nil))))
               )))
         )
       (when (< cur-indent 0) (setq cur-indent 0))

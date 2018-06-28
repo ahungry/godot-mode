@@ -17,6 +17,7 @@ func _input(event):
   if (event.is_action("ui_left")):
     _direction = -1
     print("Moving left")
+    print("yea it works")
 
   if (event.is_action("ui_right")):
     _direction = 1
