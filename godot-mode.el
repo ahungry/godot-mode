@@ -44,6 +44,7 @@
    '("\\(extends\\|if\\|self\\|else\\| or\\)" 1 font-lock-keyword-face)
    '("\\(\".*?\"\\)" . font-lock-string-face)
    '("\\('.*?'\\)" . font-lock-string-face)
+   '("[[:space:]]*#.*" . font-lock-comment-face)
  ))
 
 (defvar default-tab-width 2)
