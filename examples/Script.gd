@@ -45,6 +45,7 @@ func _process(delta):
 
 func _on_body_enter(other):
   if (other.is_in_group("enemy")):
+    blabla
     other.hit_by_player()
 
   speed = 0

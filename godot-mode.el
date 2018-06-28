@@ -6,7 +6,7 @@
 ;; Maintainer: Matthew Carter <m@ahungry.com>
 ;; URL: https://github.com/ahungry/godot-mode
 ;; Version: 0.0.1
-;; Date: 2018-02-15
+;; Date: 2018-06-27
 ;; Keywords: languages, godot,
 ;; Package-Requires: ((emacs "25.1") (cl-lib "0.6.1"))
 
@@ -27,17 +27,7 @@
 
 ;;; Commentary:
 
-;; The dart-mode that exists doesn't properly indent, so give this a try.
-;;
-;; Much of this mode is derived from the js.el package.
-;;
-;; General Remarks:
-;;
-;; XXX: This mode assumes that block comments are not nested inside block
-;; XXX: comments
-;;
-;; Exported names start with "godot-"; private names start with
-;; "godot--".
+;; Here be some godot-mode code.
 
 ;;; Code:
 
