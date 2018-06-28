@@ -39,6 +39,7 @@ func _process(delta):
 
   if (_bdirection != 0):
     set_pos(get_pos() + Vector2(_bdirection * turn_speed, 0))
+
   else:
     set_pos(get_pos() + Vector2(_direction * turn_speed, 0))
 

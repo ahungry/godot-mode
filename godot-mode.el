@@ -70,23 +70,17 @@
           (cur-indent (current-indentation)))
       (if (looking-at "^[ \t]*\\(var\\|func\\).*[:=]")
           (setq cur-indent 0)
-        (if (looking-at "^[ \t]*else:")
-            (progn
-              (setq cur-indent (- (current-indentation) default-tab-width))
-              (setq not-indented nil))
-            (save-excursion
-              (while not-indented
-                (forward-line -1)
-                (if (looking-at "^[ \t]*\\(func\\|if\\|else\\).*:")
-                    (progn
-                      (setq cur-indent (+ default-tab-width (current-indentation)))
-                      (setq not-indented nil))
-                  (if (or (looking-at "^[ \t]*$") (looking-at "^[ \t]else:"))
-                      (progn
-                        ;; (setq cur-indent default-tab-width)
-                        ;; (setq cur-indent (- (current-indentation) default-tab-width))
-                        (setq not-indented nil))
-                    (if (bobp) (setq not-indented nil)))))))
+        (save-excursion
+          (while not-indented
+            (forward-line -1)
+            (if (looking-at "^[ \t]*\\(func\\|if\\|else\\).*:")
+                (progn
+                  (setq cur-indent (+ default-tab-width (current-indentation)))
+                  (setq not-indented nil))
+              (if (looking-at "^[ \t]*$")
+                  (progn
+                    (setq not-indented nil))
+                (if (bobp) (setq not-indented nil))))))
         )
       (when (< cur-indent 0) (setq cur-indent 0))
       (if cur-indent (indent-line-to cur-indent) (indent-line-to 0))))
