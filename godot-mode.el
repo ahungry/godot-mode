@@ -37,14 +37,15 @@
 
 (defconst godot-mode-font-lock-keywords-1
   (list
+   '("#.*" . font-lock-comment-face)
    '("var \\(.*?\\) =" 1 font-lock-variable-name-face)
    '("[\\.[:space:]{($]\\(_*[[:upper:]]+[[:upper:][:lower:]_$0-9]*\\)" 1 font-lock-type-face)
    '("\\(func\\) \\(.*?\\)(" 2 font-lock-function-name-face)
-   '("\\(var\\|func\\)" . font-lock-keyword-face)
-   '("\\(extends\\|if\\|self\\|else\\| or\\)" 1 font-lock-keyword-face)
+   '("\\(const\\|var\\|func\\)" . font-lock-keyword-face)
+   '("\\(export\\|extends\\|signal\\|if\\|elif\\|pass\\|self\\|else\\| or\\)" 1 font-lock-keyword-face)
    '("\\(\".*?\"\\)" . font-lock-string-face)
    '("\\('.*?'\\)" . font-lock-string-face)
-   '("[[:space:]]*#.*" . font-lock-comment-face)
+   ;; '("[[:space:]]*#.*" . font-lock-comment-face)
  ))
 
 (defvar default-tab-width 2)
@@ -59,7 +60,7 @@
       (indent-line-to 0)
     (let ((not-indented t)
           (cur-indent (current-indentation)))
-      (if (looking-at "^[ \t]*\\(var\\|func\\).*[:=]")
+      (if (looking-at "^[ \t]*\\(func\\).*[:=]")
           (setq cur-indent 0)
         (save-excursion
           (while not-indented
@@ -81,7 +82,8 @@
 (define-derived-mode godot-mode text-mode "Godot" ()
   "Major mode for editing  (Godot) files."
   :group 'languages
-  (set (make-local-variable 'indent-tabs-mode) nil)
+  (set (make-local-variable 'indent-tabs-mode) t)
+  (set (make-local-variable 'tab-width) 2)
   (set (make-local-variable 'indent-line-function) 'godot-indent-line)
   (set (make-local-variable 'font-lock-defaults)
        '(godot-mode-font-lock-keywords-1)))
