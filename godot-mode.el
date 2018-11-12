@@ -41,7 +41,7 @@
    '("var \\(.*?\\) =" 1 font-lock-variable-name-face)
    '("[\\.[:space:]{($]\\(_*[[:upper:]]+[[:upper:][:lower:]_$0-9]*\\)" 1 font-lock-type-face)
    '("\\(func\\) \\(.*?\\)(" 2 font-lock-function-name-face)
-   '("\\(const\\|var\\|func\\)" . font-lock-keyword-face)
+   '("\\(return\\|const\\|var\\|func\\)" . font-lock-keyword-face)
    '("[\t ]\\(in\\|for\\|export\\|extends\\|signal\\|if\\|elif\\|pass\\|self\\|else\\|or\\) " 1 font-lock-keyword-face)
    '("\\(\".*?\"\\)" . font-lock-string-face)
    '("\\('.*?'\\)" . font-lock-string-face)
