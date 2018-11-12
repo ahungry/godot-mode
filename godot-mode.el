@@ -42,7 +42,7 @@
    '("[\\.[:space:]{($]\\(_*[[:upper:]]+[[:upper:][:lower:]_$0-9]*\\)" 1 font-lock-type-face)
    '("\\(func\\) \\(.*?\\)(" 2 font-lock-function-name-face)
    '("\\(const\\|var\\|func\\)" . font-lock-keyword-face)
-   '("\\(export\\|extends\\|signal\\|if\\|elif\\|pass\\|self\\|else\\| or\\)" 1 font-lock-keyword-face)
+   '("[\t ]\\(in\\|for\\|export\\|extends\\|signal\\|if\\|elif\\|pass\\|self\\|else\\|or\\) " 1 font-lock-keyword-face)
    '("\\(\".*?\"\\)" . font-lock-string-face)
    '("\\('.*?'\\)" . font-lock-string-face)
    ;; '("[[:space:]]*#.*" . font-lock-comment-face)
@@ -65,7 +65,7 @@
         (save-excursion
           (while not-indented
             (forward-line -1)
-            (if (looking-at "^[ \t]*\\(func\\|if\\|else\\).*:")
+            (if (looking-at "^[ \t]*\\(func\\|for\\|if\\|else\\).*:")
                 (progn
                   (setq cur-indent (+ default-tab-width (current-indentation)))
                   (setq not-indented nil))
