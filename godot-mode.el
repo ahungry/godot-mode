@@ -42,7 +42,7 @@
    '("[\\.[:space:]{($]\\(_*[[:upper:]]+[[:upper:][:lower:]_$0-9]*\\)" 1 font-lock-type-face)
    '("\\(func\\) \\(.*?\\)(" 2 font-lock-function-name-face)
    '("\\(extends\\|return\\|const\\|var\\|func\\)" . font-lock-keyword-face)
-   '("[\t ]\\(in\\|for\\|export\\|extends\\|signal\\|if\\|elif\\|pass\\|self\\|else\\|or\\)[\n ]" 1 font-lock-keyword-face)
+   '("[\t ]\\(in\\|for\\|export\\|extends\\|signal\\|if\\|elif\\|pass\\|self\\|or\\|and\\|else\\|or\\)[\n :]" 1 font-lock-keyword-face)
    '("\\(\".*?\"\\)" . font-lock-string-face)
    '("\\('.*?'\\)" . font-lock-string-face)
    ;; '("[[:space:]]*#.*" . font-lock-comment-face)
