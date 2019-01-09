@@ -65,7 +65,8 @@
         (save-excursion
           (while not-indented
             (forward-line -1)
-            (if (looking-at "^[ \t]*\\(class\\|func\\|for\\|if\\|else\\).*:")
+            (if (or (looking-at "^[ \t]*\\(class\\|func\\|for\\|if\\|else\\).*:")
+                    (looking-at ".*{$"))
                 (progn
                   (setq cur-indent (+ default-tab-width (current-indentation)))
                   (setq not-indented nil))
